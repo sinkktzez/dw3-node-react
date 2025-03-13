@@ -1,37 +1,37 @@
 import express from "express";
 import mongoose from "mongoose";
-import Games from "./models/Games.js";
+import Games from "./models/Games.js"
 const app = express();
 
 // Importando as rotas (endpoints) de Games
-import gameRoutes from "./routes/gameRoutes.js";
+import gameRoutes from './routes/gameRoutes.js'
 
-// Configuração do Express
+// Configurações do Express
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/", gameRoutes);
+app.use('/', gameRoutes)
 
 // Iniciando a conexão com o banco de dados do MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/api-thegames");
+mongoose.connect("mongodb://127.0.0.1:27017/api-thegames")
 
-// Rota Principal
+// ROTA PRINCIPAL
 app.get("/", (req, res) => {
-  //  res.send("API iniciado com sucesso!");
+  //   res.send("API iniciada com sucesso!");
   const games = [
     {
-      tittle: "game 1",
+      title: "Game 1",
       year: 2020,
       platform: "PC",
       price: 20,
     },
     {
-      tittle: "game 2",
+      title: "Game 2",
       year: 2024,
-      platform: "XBOX SERIES X",
+      platform: "Playstation 5",
       price: 200,
     },
   ];
-  res.json(games);
+  res.json(games)
 });
 
 // Iniciando o servidor
